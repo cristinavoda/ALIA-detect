@@ -1,0 +1,14 @@
+# Entorno virtual
+venv/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Reportes generados (JSON)
+reports/
+
+# Configuración del editor (opcional)
+.vscode/
