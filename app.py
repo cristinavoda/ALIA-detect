@@ -39,7 +39,7 @@ def analyze_prompt(prompt: str, category: str):
 
 # Interfaz Gradio
 with gr.Blocks() as demo:
-    gr.Markdown("# ALIA-detect 🚨 Human-in-the-loop Risk Detector")
+    gr.Markdown("# ALIA-detect  Human-in-the-loop Risk Detector")
     prompt_input = gr.Textbox(label="Escribe tu prompt aquí:", lines=3, placeholder="Introduce el texto a evaluar...")
     category_input = gr.Dropdown(
         label="Selecciona la categoría",
