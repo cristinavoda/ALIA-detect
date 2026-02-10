@@ -1,3 +1,11 @@
+"""
+Copyright (C) 2026 Cristina Voda
+This file is part of ALIA-detect.
+
+Licensed under the GNU General Public License v3.0 (GPL-3.0)
+You may obtain a copy of the License at https://www.gnu.org/licenses/gpl-3.0.txt
+"""
+
 import gradio as gr
 from pathlib import Path
 from brand_guard import brand_guard, summarize
