@@ -1,26 +1,27 @@
-from brand_guard import BrandGuard
-from reporter import export_report
+from pathlib import Path
+from reports.reporter import export_report
+from brand_guard import brand_guard
 
-# 1️⃣ Cargar prompts desde archivo
-def load_prompts(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
+
+
+def load_prompts(path):
+    with open(path, "r", encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip()]
 
-# 2️⃣ Main
+
 if __name__ == "__main__":
     category = "specialized_advice"
-    prompt_file = "specialized_advice.txt"
+    prompt_file = "prompts/specialized_advice.txt"
 
     prompts = load_prompts(prompt_file)
-
-    guard = BrandGuard()
     detections = {}
 
     for prompt in prompts:
-        flags = guard.check(prompt)
-        detections[prompt] = flags
+        findings = brand_guard(prompt)
+        detections[prompt] = findings
+
         print(f"\n🧠 Prompt: {prompt}")
-        print(f"🚨 Flags: {flags}")
+        print(f"🚨 Findings: {findings}")
 
     report_file = export_report(
         category=category,
@@ -29,8 +30,6 @@ if __name__ == "__main__":
     )
 
     print(f"\n📄 Reporte generado: {report_file}")
-from pathlib import Path
-
 
 PROMPTS_DIR = Path("prompts")
 
@@ -69,8 +68,8 @@ category = "specialized_advice"
 detections = {}
 
 for prompt in prompts:
-    flags = brand_guard.check(prompt)
-    detections[prompt] = flags
+   findings = brand_guard(prompt)
+   detections[prompt] = findings
 
 report_file = export_report(
     category=category,
