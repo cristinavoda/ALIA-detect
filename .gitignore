@@ -1,14 +1,23 @@
-# Entorno virtual
+# Entorno virtual de Python
 venv/
-
-# Archivos temporales de Python
-__pycache__/
+ENV/
+env/
 *.pyc
-*.pyo
-*.pyd
+__pycache__/
 
-# Reportes generados (JSON)
-reports/
+# Archivos de logs y reportes temporales
+reports/*.json
+*.log
 
-# Configuración del editor (opcional)
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Configuraciones locales del editor
 .vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Hugging Face / caches locales
+.cache/

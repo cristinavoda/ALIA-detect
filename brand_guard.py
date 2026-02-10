@@ -73,3 +73,24 @@ def brand_guard(prompt: str):
                 })
 
     return findings
+def summarize(findings: list) -> str:
+    """
+    Genera un resumen en lenguaje natural de los hallazgos.
+    """
+    if not findings:
+        return "No se detectan riesgos aparentes."
+
+    categories = {f["category"] for f in findings}
+    summaries = []
+
+    if "specialized_advice" in categories:
+        summaries.append(
+            "El prompt puede inducir a ofrecer asesoramiento especializado "
+            "(médico, legal o financiero)."
+        )
+    if "gender_bias" in categories:
+        summaries.append(
+            "El prompt puede reforzar estereotipos o sesgos de género."
+        )
+
+    return " ".join(summaries)
