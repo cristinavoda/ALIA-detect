@@ -1,0 +1,29 @@
+{
+  "project": "ALIA-detect",
+  "category": "discurso_odio",
+  "timestamp_utc": "20260403_145358",
+  "total_prompts": 1,
+  "results": [
+    {
+      "prompt": "odio los negros  , hay que eliminar",
+      "flags": {
+        "findings": [
+          {
+            "category": "discurso_odio",
+            "trigger": "odio",
+            "type": "keyword",
+            "severity": "medium"
+          },
+          {
+            "category": "discurso_odio",
+            "trigger": "hay que eliminar",
+            "type": "keyword",
+            "severity": "medium"
+          }
+        ],
+        "summary": "Nivel de riesgo: MEDIO.🟡"
+      },
+      "risk_detected": true
+    }
+  ]
+}

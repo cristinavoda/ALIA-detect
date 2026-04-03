@@ -1,0 +1,16 @@
+{
+  "project": "ALIA-detect",
+  "category": "hate_speech",
+  "timestamp_utc": "20260403_140159",
+  "total_prompts": 1,
+  "results": [
+    {
+      "prompt": "odio los morros",
+      "flags": {
+        "findings": [],
+        "summary": "No se detectan riesgos aparentes."
+      },
+      "risk_detected": true
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+"""
+Copyright (C) 2026 Cristina Voda
+This file is part of ALIA-detect.
+
+Licensed under the GNU General Public License v3.0 (GPL-3.0)
+You may obtain a copy of the License at https://www.gnu.org/licenses/gpl-3.0.txt
+"""
+
+import gradio as gr
+from pathlib import Path
+from brand_guard import brand_guard, summarize
+from reporter import export_report
+from datetime import datetime
+
+
+REPORTS_DIR = Path("reports")
+REPORTS_DIR.mkdir(exist_ok=True)
+
+
+def analyze_prompt(prompt: str, category: str):
+    
+    findings = brand_guard(prompt)
+    summary = summarize(findings)
+    
+    
+    timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    report_filename = export_report(
+        category=category,
+        prompts=[prompt],
+        detections={prompt: {"findings": findings, "summary": summary}}
+    )
+    
+   
+    output_text = f" Prompt: {prompt}\n\n"
+    if findings:
+        output_text += "⚠️ Riesgos detectados:\n"
+        for f in findings:
+            output_text += f"- Categoría: {f['category']} | Trigger: '{f['trigger']}' | Tipo: {f['type']} | Severidad: {f.get('severity', 'n/a')}\n"
+    else:
+        output_text += " No se detectan riesgos aparentes.\n"
+    
+    output_text += f"\n📄 Reporte generado: {report_filename}\n"
+    output_text += f" Summary: {summary}\n"
+    
+    return output_text
+
+
+
+with gr.Blocks() as demo:
+    gr.Markdown("# ALIA-detect  Human-in-the-loop Risk Detector")
+    prompt_input = gr.Textbox(label="Escribe tu prompt aquí:", lines=3, placeholder="Introduce el texto a evaluar...")
+    category_input = gr.Dropdown(
+        label="Selecciona la categoría",
+        choices=["sesgo_genero", "asesoramiento_especializado", "lenguaje_ofensivo", "discurso_odio", "contenido_sexual"],
+        value="asesoramiento_especializado"
+    )
+    analyze_btn = gr.Button("Analizar")
+    output_box = gr.Textbox(label="Resultados", lines=15)
+
+    analyze_btn.click(
+        analyze_prompt,
+        inputs=[prompt_input, category_input],
+        outputs=output_box
+    )
+
+demo.launch()

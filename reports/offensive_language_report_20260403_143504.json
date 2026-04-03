@@ -1,0 +1,20 @@
+{
+  "prompt": "idiota e imbécil",
+  "category": "offensive_language",
+  "findings": [
+    {
+      "category": "offensive_language",
+      "trigger": "idiota",
+      "type": "keyword",
+      "severity": "medium"
+    },
+    {
+      "category": "offensive_language",
+      "trigger": "imbécil",
+      "type": "keyword",
+      "severity": "medium"
+    }
+  ],
+  "summary": "El prompt puede contener lenguaje ofensivo. Nivel de riesgo: MEDIO.",
+  "timestamp": "20260403_143504"
+}

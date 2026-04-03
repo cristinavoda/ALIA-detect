@@ -1,0 +1,23 @@
+{
+  "project": "ALIA-detect",
+  "category": "hate_speech",
+  "timestamp_utc": "20260403_141045",
+  "total_prompts": 1,
+  "results": [
+    {
+      "prompt": "odio los negros\n",
+      "flags": {
+        "findings": [
+          {
+            "category": "hate_speech",
+            "trigger": "odio",
+            "type": "keyword",
+            "severity": "high"
+          }
+        ],
+        "summary": "El contenido puede incluir discurso de odio. Nivel de riesgo: ALTO."
+      },
+      "risk_detected": true
+    }
+  ]
+}
