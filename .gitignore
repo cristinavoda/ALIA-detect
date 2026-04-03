@@ -1,4 +1,30 @@
+<<<<<<< HEAD
 venv/
 __pycache__/
 *.pyc
 .env
+=======
+# Entorno virtual de Python
+venv/
+ENV/
+env/
+*.pyc
+__pycache__/
+
+# Archivos de logs y reportes temporales
+reports/*.json
+*.log
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Configuraciones locales del editor
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Hugging Face / caches locales
+.cache/
+>>>>>>> 9044519352f8dcf1e78d107064162a90e0e1fb5c
